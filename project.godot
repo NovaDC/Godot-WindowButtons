@@ -13,9 +13,9 @@ config_version=5
 config/name="temp_name"
 config/description="temp_desc"
 config/version="temp_version"
-config/features=PackedStringArray("temp_gd_min", "GL Compatibility")
-boot_splash/image="res://addons/temp_name/icon.svg"
-config/icon="res://addons/temp_name/icon.svg"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/image="uid://cll5rcgtda5o5"
+config/icon="uid://cll5rcgtda5o5"
 
 [debug]
 
@@ -27,7 +27,7 @@ script/templates_search_path="res://templates"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/temp_name/plugin.cfg")
+enabled=PackedStringArray()
 
 [rendering]
 
