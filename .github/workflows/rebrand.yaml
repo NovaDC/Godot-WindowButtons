@@ -1,0 +1,39 @@
+name: Apply project template
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  apply:
+    if: ${{ hashFiles('./github/workflows/TEMPLATE_APPLIED') == '' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Make helper executable
+        run: chmod +x ./github/workflows/rebrand.sh
+
+      - name: Run replacement script
+        run: |
+          ./github/workflows/rebrand.sh \
+            "temp_name=${{ github.event.repository.name }}" \
+            "temp_desc=${{ github.event.repository.description }}" \
+            "temp_author=${{ github.event.repository.owner.login }}" \
+            "temp_ver=v0.1.0.0"\
+            "temp_gd_min=4.2"
+
+      - name: Commit changes & disable workflow
+        run: |
+          git config user.name  "Template Bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          echo "Template applied on $(date --iso-8601=seconds)" > ./github/workflows/TEMPLATE_APPLIED
+          git add -A
+          git commit -m "ci: apply template & disable workflow [skip ci]"
+          git push

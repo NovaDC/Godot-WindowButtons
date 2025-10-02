@@ -1,0 +1,35 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="temp_name"
+config/description="temp_desc"
+config/version="temp_version"
+config/features=PackedStringArray("temp_gd_min", "GL Compatibility")
+boot_splash/image="res://addons/temp_name/icon.svg"
+config/icon="res://addons/temp_name/icon.svg"
+
+[debug]
+
+gdscript/warnings/exclude_addons=false
+
+[editor]
+
+script/templates_search_path="res://templates"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/temp_name/plugin.cfg")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
